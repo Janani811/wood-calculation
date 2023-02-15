@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./calculation.js"></script>
+    <title>Wood Calculator</title>
+  </head>
+  <body>
+    <form action="">
+      <div class="dis">
+        <label for="type"><b>Type</b></label>
+        <select name="" id="type" required>
+          <option value="8" selected data-option-type="4*2">4*2</option>
+          <option value="6" data-option-type="3*2">3*2</option>
+          <option value="15" data-option-type="5*3">5*3</option>
+        </select>
+      </div>
+      <div class="dis">
+        <label for="length"><b>Length</b></label>
+        <input
+          type="number"
+          id="length"
+          min="1"
+          placeholder="Enter Length"
+          name="length"
+          required
+        />
+      </div>
+      <div class="dis">
+        <label for="pCount"><b>Pcs</b></label>
+        <input
+          type="number"
+          name="pieceCount"
+          placeholder="Enter Count"
+          id="pCount"
+          min="1"
+          required
+        />
+      </div>
+      <button type="button" onclick="createTable()">add</button>
+    </form>
+    <div id="totalcf" style="margin: 20px 0px 0 20px"></div>
+    <div
+      id="tableGenerate"
+      style="width: 100%; padding: 20px"
+      class="row"
+    ></div>
+  </body>
+</html>
