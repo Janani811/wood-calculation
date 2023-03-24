@@ -4,59 +4,71 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=1024, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css" />
-    <script src="./calculation.js"></script>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" />
+    <script src="./js/calculation.js"></script>
     <title>Wood Calculator</title>
   </head>
   <body onload="createButtons()">
-    <form id="myForm">
-      <div class="dis">
-        <label for="type"><b>Type</b></label>
-        <select name="type" id="type" required>
-          <option value="8" selected data-option-type="4*2">4*2</option>
-          <option value="6" data-option-type="3*2">3*2</option>
-          <option value="15" data-option-type="5*3">5*3</option>
-        </select>
+    <div class="app">
+      <form id="myForm">
+        <div class="dis">
+          <label for="length"><b>Length</b></label>
+          <input
+            type="text"
+            id="length"
+            class="form-control"
+            readonly
+            placeholder="Enter Length"
+            name="length"
+            required
+          />
+        </div>
+        <div class="dis">
+          <label for="type"><b>Type</b></label>
+          <select class="form-select" name="type" id="type" required>
+            <option value="8" selected data-option-type="4*2">4*2</option>
+            <option value="6" data-option-type="3*2">3*2</option>
+            <option value="15" data-option-type="5*3">5*3</option>
+          </select>
+        </div>
+
+        <div class="dis">
+          <label for="pCount"><b>Pieces</b></label>
+          <input
+            type="text"
+            class="form-control"
+            name="pieceCount"
+            placeholder="Enter Count"
+            id="pCount"
+            required
+            readonly
+          />
+        </div>
+      </form>
+      <div class="container">
+        <div class="contain">
+          <h4>Length</h4>
+          <div id="lencontainer"></div>
+        </div>
+        <div>
+          <button type="button" class="btns add" onclick="createTable()">
+            ADD
+          </button>
+        </div>
+        <div class="contain">
+          <h4>Piece</h4>
+          <div id="pcscontainer"></div>
+        </div>
       </div>
-      <div class="dis">
-        <label for="length"><b>Length</b></label>
-        <input
-          type="text"
-          id="length"
-          min="1"
-          placeholder="Enter Length"
-          name="length"
-          required
-        />
-      </div>
-      <div class="dis">
-        <label for="pCount"><b>Pcs</b></label>
-        <input
-          type="text"
-          name="pieceCount"
-          placeholder="Enter Count"
-          id="pCount"
-          min="1"
-          required
-        />
-      </div>
-      <button type="button" onclick="createTable()">add</button>
-    </form>
-    <div class="container">
-      <div>
-        <p>Length</p>
-        <div id="lencontainer" style="margin: 20px 0px 0 20px"></div>
-      </div>
-      <div>
-        <p>Piece</p>
-        <div id="pcscontainer" style="margin: 20px 0px 0 20px"></div>
-      </div>
+      <div id="totalcf" style="margin: 20px 0px 0 20px"></div>
+      <div
+        id="tableGenerate"
+        style="width: 100%; padding: 20px"
+        class="row"
+      ></div>
     </div>
-    <div id="totalcf" style="margin: 20px 0px 0 20px"></div>
-    <div
-      id="tableGenerate"
-      style="width: 100%; padding: 20px"
-      class="row"
-    ></div>
   </body>
+  <script src="./js/jquery.min.js"></script>
+  <script src="./bootstrap/js/bootstrap.min.js"></script>
 </html>

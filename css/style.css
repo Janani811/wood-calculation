@@ -1,23 +1,38 @@
+@font-face {
+  font-family: ExtraBold;
+  src: url(../static/Inter-ExtraBold.ttf);
+}
+
+@font-face {
+  font-family: regular;
+  src: url(../static/Inter-Regular.ttf);
+}
+
 * {
   box-sizing: border-box;
+  margin: 0;
+  font-family: regular;
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  display: grid;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+.app {
+  background: #f4f3f3;
+  width: 80%;
 }
 form {
-  border: 1px solid #6d6a6a;
   padding: 2rem;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
   border-radius: 8px;
-  margin: 16px;
 }
 
-input[type="number"],
+/* input[type="number"],
 input[type="text"],
 select {
   width: 200px;
@@ -27,7 +42,7 @@ select {
   margin-top: 6px;
   resize: vertical;
   border-radius: 8px;
-}
+} */
 
 /* Clearfix (clear floats) */
 .row::after {
@@ -59,28 +74,47 @@ tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
-button {
-  background-color: #4143d1;
-  color: white;
-  padding: 14px 20px;
+.btns {
+  background: #2b0695;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 16px;
+  color: #ffffff;
   border: none;
   cursor: pointer;
-  width: 60px;
-  border-radius: 8px;
-  display: flex;
-  align-self: flex-end;
+}
+.table-list {
+  margin-bottom: 1rem;
+}
+.number {
+  width: 38px;
+  height: 38px;
+}
+.add {
+  padding: 0.75rem 0.875rem;
+}
+.contain {
+  background: #d2d2d2;
+  padding: 1rem;
+  border-radius: 6px;
+  text-align: center;
 }
 .container {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
 }
 #lencontainer,
 #pcscontainer {
-  width: 400px;
   display: grid;
   place-items: center;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 60px 60px 60px;
   column-gap: 1rem;
   row-gap: 1rem;
+}
+h4 {
+  margin-bottom: 0.875rem;
 }
