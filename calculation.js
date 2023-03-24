@@ -16,6 +16,16 @@ function createTable() {
   data[selectedOption].push({ length, type, pieceCount, total });
 
   tableGeneration();
+  document.getElementById("myForm").reset();
+}
+
+function clearLen() {
+  let inputLength = document.getElementById("length");
+  inputLength.value = inputLength.value.slice(0, -1);
+}
+function clearPcs() {
+  let inputLength = document.getElementById("pCount");
+  inputLength.value = inputLength.value.slice(0, -1);
 }
 
 function tableGeneration() {
@@ -71,4 +81,42 @@ function tableGeneration() {
   document.getElementById("tableGenerate").innerHTML = fullTable;
   document.getElementById("totalcf").innerHTML =
     "Your Total Cf <b>" + totalCf + "</b>";
+}
+
+function clickedLengthValue(value) {
+  let inputLength = document.getElementById("length");
+  inputLength.value = inputLength.value + value;
+}
+function clickedPcsValue(value) {
+  let inputLength = document.getElementById("pCount");
+  inputLength.value = inputLength.value + value;
+}
+
+function createButtons() {
+  let lengthBtn = "";
+  let pcsBtn = "";
+
+  for (let i = 0; i <= 9; i++) {
+    lengthBtn +=
+      "<button id='btn' type='button' class='button' onclick=clickedLengthValue(" +
+      i +
+      ")>" +
+      i +
+      "</button>";
+  }
+  lengthBtn +=
+    "<button id='btn' type='button' class='button' onclick=clearLen()>X</button><button id='btn' type='button' class='button' onclick=clickedLengthValue('.')>.</button>";
+
+  for (let i = 0; i <= 9; i++) {
+    pcsBtn +=
+      "<button id='btn' type='button' class='button' onclick=clickedPcsValue(" +
+      i +
+      ")>" +
+      i +
+      "</button>";
+  }
+  pcsBtn +=
+    "<button id='btn' type='button' class='button' onclick=clearPcs()>X</button><button id='btn' type='button' class='button' onclick=clickedPcsValue('.')>.</button>";
+  document.getElementById("lencontainer").innerHTML = lengthBtn;
+  document.getElementById("pcscontainer").innerHTML = pcsBtn;
 }

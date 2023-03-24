@@ -4,6 +4,7 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
+  display: grid;
 }
 form {
   border: 1px solid #6d6a6a;
@@ -68,4 +69,18 @@ button {
   border-radius: 8px;
   display: flex;
   align-self: flex-end;
+}
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+#lencontainer,
+#pcscontainer {
+  width: 400px;
+  display: grid;
+  place-items: center;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 1rem;
+  row-gap: 1rem;
 }
