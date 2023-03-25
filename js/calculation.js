@@ -34,7 +34,26 @@ function createTable() {
       searching: false,
       info: "",
       dom: "Bfrtip",
-      buttons: ["pdf"],
+      buttons: [
+        {
+          extend: "pdfHtml5",
+          pageSize: "A4",
+          alignment: "center",
+          customize: function (doc) {
+            doc.styles.tableHeader.alignment = "left";
+            doc.styles.tableHeader.padding = "0.5rem";
+            doc.styles.tableHeader.margin =
+              doc.styles.tableBodyOdd.margin =
+              doc.styles.tableBodyEven.margin =
+                [10, 10, 10, 10];
+            doc.content[1].table.widths = Array(
+              doc.content[1].table.body[0].length + 1
+            )
+              .join("*")
+              .split("");
+          },
+        },
+      ],
     });
   });
 
