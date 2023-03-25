@@ -3,17 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=1024, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/style.css" />
+    <meta name="viewport" content="width=1024" />
+
     <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" />
-    <script src="./js/calculation.js"></script>
+    <link href="./datatables/datatables.min.css" rel="stylesheet" />
+    <link href="./datatables/buttons.dataTables.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/style.css" />
+
     <title>Wood Calculator</title>
   </head>
   <body onload="createButtons()">
     <div class="app">
       <form id="myForm">
-        <div class="dis">
-          <label for="length"><b>Length</b></label>
+        <div class="input-field-container">
+          <label for="length" class="mb-2"><b>Length</b></label>
           <input
             type="text"
             id="length"
@@ -24,8 +27,8 @@
             required
           />
         </div>
-        <div class="dis">
-          <label for="type"><b>Type</b></label>
+        <div class="input-field-container">
+          <label for="type" class="mb-2"><b>Type</b></label>
           <select class="form-select" name="type" id="type" required>
             <option value="8" selected data-option-type="4*2">4*2</option>
             <option value="6" data-option-type="3*2">3*2</option>
@@ -33,8 +36,8 @@
           </select>
         </div>
 
-        <div class="dis">
-          <label for="pCount"><b>Pieces</b></label>
+        <div class="input-field-container">
+          <label for="pCount" class="mb-2"><b>Pieces</b></label>
           <input
             type="text"
             class="form-control"
@@ -46,29 +49,37 @@
           />
         </div>
       </form>
-      <div class="container">
-        <div class="contain">
-          <h4>Length</h4>
-          <div id="lencontainer"></div>
+      <div class="button-container mt-3 w-100">
+        <div class="contain shadow-lg p-3 mb-5 bg-white">
+          <h5 class="mb-3">Length</h5>
+          <div id="lencontainer" class="lencontainer"></div>
         </div>
         <div>
-          <button type="button" class="btns add" onclick="createTable()">
+          <button
+            type="button"
+            class="btns add"
+            onclick="createTable()"
+            id="add-btn"
+            disabled="true"
+          >
             ADD
           </button>
         </div>
-        <div class="contain">
-          <h4>Piece</h4>
-          <div id="pcscontainer"></div>
+        <div class="contain shadow-lg p-3 mb-5 bg-white">
+          <h5 class="mb-3">Piece</h5>
+          <div id="pcscontainer" class="pcscontainer"></div>
         </div>
       </div>
-      <div id="totalcf" style="margin: 20px 0px 0 20px"></div>
-      <div
-        id="tableGenerate"
-        style="width: 100%; padding: 20px"
-        class="row"
-      ></div>
+      <div id="totalcf" class="total-cf"></div>
+      <div id="tableGenerate" class="row" style="width: 100%"></div>
     </div>
   </body>
+  <script src="./js/calculation.js"></script>
   <script src="./js/jquery.min.js"></script>
   <script src="./bootstrap/js/bootstrap.min.js"></script>
+  <script src="./datatables/js/datatables.min.js"></script>
+  <script src="./datatables/js/dataTables.buttons.min.js"></script>
+  <script src="./datatables/js/buttons.html5.min.js"></script>
+  <script src="./datatables/js/pdfmake.js"></script>
+  <script src="./datatables/js/pdfmake_vfc.js"></script>
 </html>
