@@ -1,6 +1,15 @@
 var data = [[], [], []];
 var typeOptions = ["4 * 2", "3 * 2", "5 * 3"];
 
+function buttonAction() {
+  var lengthChange = Number(document.getElementById("length").value);
+  var pieceCountChange = Number(document.getElementById("pCount").value);
+  if (!lengthChange || !pieceCountChange) {
+    return document.getElementById("add-btn").setAttribute("disabled", true);
+  }
+  return document.getElementById("add-btn").removeAttribute("disabled");
+}
+
 function createTable() {
   var length = Number(document.getElementById("length").value);
   var pieceCount = Number(document.getElementById("pCount").value);
@@ -19,9 +28,19 @@ function createTable() {
     pieceCount,
     total,
   });
+  $(document).ready(function () {
+    var table = $("table").DataTable({
+      paging: false,
+      searching: false,
+      info: "",
+      dom: "Bfrtip",
+      buttons: ["pdf"],
+    });
+  });
 
   tableGeneration();
   document.getElementById("myForm").reset();
+  document.getElementById("add-btn").setAttribute("disabled", true);
 }
 
 function clearLen() {
@@ -41,9 +60,9 @@ function tableGeneration() {
     if (currentTable.length) {
       var totalCF = 0;
       let tableGenerate =
-        `<h4>Type - ` +
+        `<div><span class="type">Type - ` +
         typeOptions[index] +
-        `</h4><table width="80%" border="2" class="table-list">
+        `</span><table width="100%" class="table table-dark table-hover mt-2">
   <thead>
   <tr style="text-align:left">
 	  <th>Length</th>
@@ -76,7 +95,7 @@ function tableGeneration() {
         `</tbody>
     </table> <p style="margin-bottom:1rem">This Table Total <b>` +
         totalCF.toFixed(2) +
-        `</b></p>`;
+        `</b></p></div>`;
 
       fullTable += tableGenerate;
       totalCf += totalCF;
@@ -85,16 +104,18 @@ function tableGeneration() {
 
   document.getElementById("tableGenerate").innerHTML = fullTable;
   document.getElementById("totalcf").innerHTML =
-    "Your Total Cf <b>" + totalCf.toFixed(2) + "</b>";
+    "Your Total CF --- " + totalCf.toFixed(2);
 }
 
 function clickedLengthValue(value) {
   let inputLength = document.getElementById("length");
   inputLength.value = inputLength.value + value;
+  buttonAction();
 }
 function clickedPcsValue(value) {
   let inputLength = document.getElementById("pCount");
   inputLength.value = inputLength.value + value;
+  buttonAction();
 }
 
 function createButtons() {
@@ -110,7 +131,7 @@ function createButtons() {
       "</button>";
   }
   lengthBtn +=
-    "<button id='btn' type='button' class='btns number' onclick=clickedLengthValue('.')>&#8226;</button><button id='btn' type='button' class='btns number' onclick=clearLen()>CE</button>";
+    "<button id='btn' type='button' class='btns number' onclick=clickedLengthValue('.')>&#8226;</button><button id='btn' type='button' class='btns number clear-btn' onclick=clearLen()>CE</button>";
 
   for (let i = 0; i <= 9; i++) {
     pcsBtn +=
@@ -121,7 +142,7 @@ function createButtons() {
       "</button>";
   }
   pcsBtn +=
-    "<button id='btn' type='number' class='btns number' onclick=clickedPcsValue('.')>&#8226;</button><button id='btn' type='button' class='btns number' onclick=clearPcs()>CE</button>";
+    "<button id='btn' type='number' class='btns number' onclick=clickedPcsValue('.')>&#8226;</button><button id='btn' type='button' class='btns number clear-btn' onclick=clearPcs()>CE</button>";
   document.getElementById("lencontainer").innerHTML = lengthBtn;
   document.getElementById("pcscontainer").innerHTML = pcsBtn;
 }

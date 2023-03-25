@@ -21,10 +21,10 @@ body {
 }
 .app {
   background: #f4f3f3;
-  width: 80%;
+  width: 90%;
+  padding: 2rem;
 }
 form {
-  padding: 2rem;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -45,33 +45,14 @@ select {
 } */
 
 /* Clearfix (clear floats) */
-.row::after {
-  content: "";
-  clear: both;
-  display: table;
+.row {
+  margin: unset !important;
 }
 
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-  width: 80%;
-  border: 1px solid #a09b9b;
-  border-radius: 8px;
-}
-
-.dis {
+.input-field-container {
   display: flex;
   flex-direction: column;
-}
-
-th,
-td {
-  text-align: left;
-  padding: 10px;
-}
-
-tr:nth-child(even) {
-  background-color: #f2f2f2;
+  width: 30%;
 }
 
 .btns {
@@ -84,7 +65,7 @@ tr:nth-child(even) {
   border: none;
   cursor: pointer;
 }
-.table-list {
+.table {
   margin-bottom: 1rem;
 }
 .number {
@@ -92,7 +73,13 @@ tr:nth-child(even) {
   height: 38px;
 }
 .add {
-  padding: 0.75rem 0.875rem;
+  background-color: #770040;
+  padding: 0.5rem 0.875rem;
+  cursor: pointer;
+}
+.add:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 .contain {
   background: #d2d2d2;
@@ -100,15 +87,15 @@ tr:nth-child(even) {
   border-radius: 6px;
   text-align: center;
 }
-.container {
+.button-container {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding-top: 2rem;
 }
-#lencontainer,
-#pcscontainer {
+.lencontainer,
+.pcscontainer {
   display: grid;
   place-items: center;
   grid-template-columns: 60px 60px 60px;
@@ -117,4 +104,20 @@ tr:nth-child(even) {
 }
 h4 {
   margin-bottom: 0.875rem;
+}
+.clear-btn {
+  background-color: rgb(255, 0, 0);
+}
+.total-cf {
+  text-align: center;
+  margin: 1.5rem 0rem;
+  font-family: ExtraBold;
+  font-size: 1.5rem;
+}
+.type {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.dt-buttons {
+  margin: 1rem 0;
 }
